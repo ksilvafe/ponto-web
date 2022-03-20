@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+
+  constructor(
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
+    this.gerarForm();
   }
 
+  gerarForm() {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', [Validators.required, Validators.minLength(6)]]
+    })
+  }
+
+  logar() {
+    if (this.form.invalid) {
+      this.snackBar.open(
+        "Dados Invalidos", "Erro", {duration: 5000 });
+    }
+    alert(JSON.stringify(this.form.value));
+  }
 }
