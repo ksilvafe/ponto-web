@@ -14,10 +14,11 @@ import { LoginModule } from './autenticacao';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    LoginModule
+    LoginModule,
+    
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
