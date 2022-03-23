@@ -1,8 +1,8 @@
-# system-ponto-Web
+# system-ponto-web
 
 Sistema de ponto inteligente criado com Angular e Spring boot
 
-## Stack
+## Libs
 
 - Angular Material
 - Hammerjs
