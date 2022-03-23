@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { Login } from '../../models';
 @Component({
   selector: 'app-login-pf',
   templateUrl:'./login.component.html',
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
         "Dados Invalidos", "Erro", {duration: 5000 });
         return;
     }
-    alert(JSON.stringify(this.form.value));
+    const login: Login = this.form.value;
+    alert('Email: ' + login.email + ' Senha: ' + login.senha);
   }
 }
