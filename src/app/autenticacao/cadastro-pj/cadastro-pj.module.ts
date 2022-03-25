@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { CadastrarPjComponent, CadastroPjComponent } from './components';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -32,7 +33,8 @@ import { CadastrarPjComponent, CadastroPjComponent } from './components';
     MatIconModule,
     MatSnackBarModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    SharedModule
   ]
 })
 export class CadastroPjModule { }
