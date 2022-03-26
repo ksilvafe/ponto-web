@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { CadastrarPjComponent, CadastroPjComponent } from './components';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CadastrarPjService } from './services';
 
 
 
@@ -35,6 +36,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatListModule,
     MatToolbarModule,
     SharedModule
+  ],
+  providers: [
+    CadastrarPjService
   ]
 })
 export class CadastroPjModule { }
