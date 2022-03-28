@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModule, LoginRoutingModule, CadastroPjModule, CadastroPjRoutingModule, CadastroPfModule, CadastroPfRoutingModule } from './autenticacao';
+import { FuncionarioModule } from './funcionario';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoginModule, LoginRoutingModule, CadastroPjModule, CadastroPjRoutingMod
     CadastroPfModule,
     CadastroPjRoutingModule,
     CadastroPfRoutingModule,
+    FuncionarioModule,
     
     AppRoutingModule
   ],
