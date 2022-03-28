@@ -1,15 +1,15 @@
 <form [formGroup]="form" fxLayoutAlign="center" novalidate>
     <mat-list>
-        <mat-list-item>
+        <mat-list-item fxLayoutAlign="center">
             <mat-form-field>
                 <input matInput placeholder="Email" formControlName="email">
             </mat-form-field>
         </mat-list-item>
-        <mat-list-item>
-            <mat-form-field>
+        <mat-list-item fxLayoutAlign="center">
+            <mat-form-field class="password">
                 <input type="password" matInput placeholder="Senha" formControlName="senha" >
             </mat-form-field>
-            <span matTooltip="Senha deve conter ao menos 6 caracteres">
+            <span class="toolbar-icon" matTooltip="Senha deve conter ao menos 6 caracteres">
                 <mat-icon>help</mat-icon>
             </span>
         </mat-list-item>

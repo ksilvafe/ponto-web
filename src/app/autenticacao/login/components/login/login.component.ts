@@ -42,19 +42,17 @@ export class LoginComponent implements OnInit {
     this.loginService.logar(login)
     .subscribe(
       data => {
-        console.log(JSON.stringify(data));
         localStorage['token'] = data['data']['token'];
         const usuarioData = JSON.parse(
           atob(data['data']['token'].split('.')[1]));
         console.log(JSON.stringify(usuarioData));
         if (usuarioData['role'] == 'ROLE_ADMIN') {
-          alert('Bem vindo ADMIN');
+          this.router.navigate(['/admin']);
         } else {
-          alert('Bem vindo USUARIO');
+          this.router.navigate(['/funcionario']);
         }
       },
       err => {
-        console.log(JSON.stringify(err));
         let msg: string = "Tente novamente em instantes.";
         if (err['status'] === 400) {
           msg = "Email/senha invalidos"
