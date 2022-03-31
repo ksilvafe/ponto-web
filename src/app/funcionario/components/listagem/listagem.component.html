@@ -1,12 +1,13 @@
 <a mat-button color="warn" routerLink="/funcionario">
 Adicionar Lançamento
 </a>
-<mat-table [dataSource]="dataSource">
+<mat-table [dataSource]="dataSource" matSort>
+
     <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
     <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
 
     <ng-container matColumnDef="data">
-       <mat-header-cell *matHeaderCellDef>
+       <mat-header-cell *matHeaderCellDef mat-sort-header>
             Data
         </mat-header-cell>
         <mat-cell *matCellDef="let lancamento">
@@ -15,7 +16,7 @@ Adicionar Lançamento
     </ng-container>
 
     <ng-container matColumnDef="tipo">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
             Tipo
         </mat-header-cell>
         <mat-cell *matCellDef="let lancamento">
@@ -24,7 +25,7 @@ Adicionar Lançamento
     </ng-container>
 
     <ng-container matColumnDef="localizacao">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef> 
             Localização
         </mat-header-cell>
         <mat-cell *matCellDef="let lancamento">
@@ -32,3 +33,9 @@ Adicionar Lançamento
         </mat-cell>
     </ng-container>
 </mat-table>
+
+<mat-paginator
+#paginator
+[pageSize]="10"
+[pageSizeOptions]="[5, 10, 15, 25]">
+</mat-paginator>
