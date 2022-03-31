@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { Tipo } from 'src/app/shared';
+import { HttpUtilService, Lancamento, LancamentoService, Tipo } from 'src/app/shared';
 
 declare var navigate: any;
 
@@ -21,14 +21,16 @@ export class LancamentoComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private router: Router,
+    private lancamentoService: LancamentoService,
+    private httpUtil: HttpUtilService
   ) { }
 
   ngOnInit(): void {
     this.dataAtual = moment().format('DD/MM/YYYY');
-    this.dataAtualEn = moment().format('YYYY-MM-DD');
+    this.dataAtualEn = moment().format('YYYY-MM-DD HH:mm:ss');
     this.obterGeoLocation();
     this.ultimoTipoLancado = '';
-    this.obterUltimoTipoLancado();
+    this.obterUltimoLancamento();
   }
 
   obterGeoLocation() {
@@ -56,18 +58,46 @@ export class LancamentoComponent implements OnInit {
     this.cadastrar(Tipo.TERMINO_TRABALHO);
   }
 
-  obterUltimoTipoLancado() {
-    this.ultimoTipoLancado = '';
+  obterUltimoLancamento() {
+    this.lancamentoService.buscarUltimoTipoLancado()
+    .subscribe(
+      data => {
+        this.ultimoTipoLancado = data.data ? data.data.tipo : '';
+      },
+      err => {
+        const msg: string = "Erro obtendo último lançamento.";
+        this.snackBar.open(msg, "Erro", { duration: 5000 });
+      }
+    );
   }
 
   cadastrar(tipo: Tipo) {
-    alert(`Tipo: ${tipo}), this.dataAtualEn: $(this.dataAtualEn),
-      geolocation: $(this.geoLocation`);
+    const lancamento: Lancamento = new Lancamento(
+      this.dataAtualEn,
+      tipo,
+      this.geoLocation,
+      this.httpUtil.obterIdUsuario()
+    );
+
+    this.lancamentoService.cadastrar(lancamento)
+    .subscribe(
+      data => {
+        const msg: string = "Lançamento realizado com sucesso!";
+        this.snackBar.open(msg, "Sucesso", { duration: 5000 });
+        this.router.navigate(['/funcionario/listagem']);
+      },
+      err => {
+        let msg: string = "Tente novamente em instantes.";
+        if (err.status == 400) {
+          msg = err.error.errors.join(' ');
+        }
+        this.snackBar.open(msg, "Erro", { duration: 5000 });
+      }
+    );
   }
 
   obterUrlMapa() {
-    return `https://www.google.com/maps/search/?api=1&query=${this.geoLocation}`;
-    // "https://www.google.com/maps/search/?api=1&query=" + this.geoLocation
+    return "https://www.google.com/maps/search/?api=1&query=" + this.geoLocation;
   } 
 
   exibirInicioTrabalho(): boolean {

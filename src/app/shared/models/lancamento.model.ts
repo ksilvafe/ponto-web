@@ -3,7 +3,7 @@ export class Lancamento {
         public data: string,
         public tipo: string,
         public localizacao: string,
-        public funcionario: string,
+        public funcionarioId: string,
         public id?: string,
  
     ) { }
