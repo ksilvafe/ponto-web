@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-import { AtualizacaoComponent, ListagemComponent, CadastroComponent } from './components';
+import { AtualizacaoComponent, ListagemComponent, CadastroComponent, AdminComponent } from './components';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -10,10 +12,14 @@ import { AtualizacaoComponent, ListagemComponent, CadastroComponent } from './co
   declarations: [
     ListagemComponent,
     CadastroComponent,
-    AtualizacaoComponent
+    AtualizacaoComponent,
+    AdminComponent
+    
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    FlexLayoutModule
   ]
 })
 export class AdminModule { }
