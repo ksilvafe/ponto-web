@@ -15,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { HttpUtilService, LancamentoService } from '../shared';
 import {MatTableModule} from '@angular/material/table';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -38,6 +39,7 @@ import {MatTableModule} from '@angular/material/table';
     MatSortModule,
     MatCardModule,
     MatTableModule,
+    SharedModule,
   ],
   providers: [
     HttpUtilService,
