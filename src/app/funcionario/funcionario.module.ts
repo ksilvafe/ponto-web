@@ -14,6 +14,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { HttpUtilService, LancamentoService } from '../shared';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -35,7 +36,8 @@ import { HttpUtilService, LancamentoService } from '../shared';
     MatSnackBarModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
   ],
   providers: [
     HttpUtilService,

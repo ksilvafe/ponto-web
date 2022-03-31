@@ -4,6 +4,7 @@ import { environment as env } from 'src/environments/environment';
 import { HttpUtilService } from './http-util.service';
 import { Observable } from 'rxjs';
 import { Lancamento } from '../models';
+import { registerLocaleData } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,15 @@ export class LancamentoService {
       lancamento,
       this.httpUtil.headers()
     )
+  }
+
+  listarTodosLancamentos(): Observable<any> {
+    return this.http.get(
+      env.baseApiUrl + this.PATH +
+        this.PATH_TODOS_LANC.replace(
+          '{funcionarioId}', this.httpUtil.obterIdUsuario()),
+      this.httpUtil.headers()
+    );
   }
 
 }

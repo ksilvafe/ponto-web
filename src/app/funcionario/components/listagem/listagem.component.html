@@ -1,1 +1,34 @@
-<p>listagem works!</p>
+<a mat-button color="warn" routerLink="/funcionario">
+Adicionar Lançamento
+</a>
+<mat-table [dataSource]="dataSource">
+    <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+
+    <ng-container matColumnDef="data">
+       <mat-header-cell *matHeaderCellDef>
+            Data
+        </mat-header-cell>
+        <mat-cell *matCellDef="let lancamento">
+            {{lancamento.data}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef>
+            Tipo
+        </mat-header-cell>
+        <mat-cell *matCellDef="let lancamento">
+            {{lancamento.tipo}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="localizacao">
+        <mat-header-cell *matHeaderCellDef>
+            Localização
+        </mat-header-cell>
+        <mat-cell *matCellDef="let lancamento">
+            {{lancamento.localizacao}}
+        </mat-cell>
+    </ng-container>
+</mat-table>
